@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the Python file name from the environment variable
+python_script="$PYFILE"
+
+# Check if the file exists and is readable
+if [ -r "$python_script" ]; then
+    # Run the Python script
+    python3 "$python_script"
+else
+    echo "Error: The specified Python file '$python_script' does not exist or is not readable."
+    exit 1
+fi
+
