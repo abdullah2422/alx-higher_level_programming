@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 def safe_print_list_integers(my_list=[], x=0):
     """
-    function that prints the first x elements of a list and only integers.
-    Prototype: def safe_print_list_integers(my_list=[], x=0):
+    function that prints the first x
     my_list can contain any type (integer, string, etc.)
-    All integers have to be printed on the same line followed by a new line
+    All integers have to be printed
     """
     printed_integers = 0
     try:
