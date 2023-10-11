@@ -1,31 +1,31 @@
+#!/usr/bin/python3
+"""
+Adds all arguments to a Python list and saves them to a JSON file.
+"""
+
 import sys
-import json
+import os
+from save_to_json_file import save_to_json_file
+from load_from_json_file import load_from_json_file
 
-# Function to save a Python object to a JSON file
-def save_to_json_file(filename, my_obj):
-    with open(filename, 'w') as file:
-        json.dump(my_obj, file)
-
-# Function to load a Python object from a JSON file
-def load_from_json_file(filename):
-    with open(filename, 'r') as file:
-        return json.load(file)
-
-# Check if there are command-line arguments
-if len(sys.argv) > 1:
-    # Load the existing list from the file if it exists, or initialize an empty list
+# Function to add items to the list and save it to a JSON file
+def add_items_to_list_and_save(args):
     try:
-        existing_list = load_from_json_file('add_item.json')
+        # Try to load an existing list from the file
+        my_list = load_from_json_file('add_item.json')
     except FileNotFoundError:
-        existing_list = []
+        # If the file doesn't exist, create an empty list
+        my_list = []
 
-    # Add the command-line arguments to the list
-    arguments = sys.argv[1:]
-    existing_list.extend(arguments)
+    # Add the provided arguments to the list
+    my_list.extend(args)
 
-    # Save the updated list back to the file
-    save_to_json_file('add_item.json', existing_list)
-else:
-    print("No arguments provided. Usage: python add_items_to_json.py <item1> <item2> ...")
+    # Save the updated list to the JSON file
+    save_to_json_file('add_item.json', my_list)
 
+if __name__ == "__main__":
+    # Remove the script name (first argument)
+    args = sys.argv[1:]
 
+    if args:
+        add_items_to_list_and_save(args)
