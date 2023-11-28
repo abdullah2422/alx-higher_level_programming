@@ -16,9 +16,9 @@ class Rectangle:
     def width(self, value):
         """Sets the width of the Rectangle instance."""
         if type(value) is not int:
-            raise TypeError("must be an integer")
+            raise TypeError("width must be an integer")
         elif value < 0:
-             raise ValueError("with the message width must be >= 0")
+             raise ValueError("width must be >= 0")
         else:
             self.__width = value
     @property
@@ -30,9 +30,9 @@ class Rectangle:
     def height(self, value):
         """Retrieves the height of the Rectangle instance."""
         if type(value) is not int:
-            raise TypeError("must be an integer")
+            raise TypeError("height must be an integer")
         elif value < 0:
-             raise ValueError("with the message height must be >= 0")
+             raise ValueError("height must be >= 0")
         else:
             self.__height = value
 
@@ -42,4 +42,6 @@ class Rectangle:
 
     def perimeter(self):
         """Returns the perimeter of the Rectangle instance."""
-        return 2 * (self.width + self.height) if self.width != 0 and self.height != 0 else 0
+        if self.height != 0 or self.width != 0:
+            perimeter = 0
+        return 2 * (self.width + self.height)
