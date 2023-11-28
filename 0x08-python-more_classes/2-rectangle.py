@@ -4,8 +4,8 @@
 class Rectangle:
     """A class Rectangle."""
     def __init__(self, width=0, height=0):
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     @property
     def width(self):
@@ -18,7 +18,7 @@ class Rectangle:
         if type(value) is not int:
             raise TypeError("width must be an integer")
         elif value < 0:
-             raise ValueError("width must be >= 0")
+            raise ValueError("width must be >= 0")
         else:
             self.__width = value
     @property
@@ -38,8 +38,9 @@ class Rectangle:
 
     def area(self):
         """Returns the area of the Rectangle instance."""
-        return self.width * self.height
+        return self.__width * self.__height
 
     def perimeter(self):
         """Returns the perimeter of the Rectangle instance."""
-        return 2 * (self.width + self.height) if self.width != 0 and self.height != 0 else 0
+        return 2 * (self.__width + self.__height) \
+            if self.__width != 0 and self.__height != 0 else 0
