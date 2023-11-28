@@ -12,8 +12,8 @@ class Rectangle:
             width (int): The width of the new rectangle.
             height (int): The height of the new rectangle.
         """
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
@@ -65,13 +65,13 @@ class Rectangle:
             if i != self.__height - 1:
                 rect.append("\n")
         return ("".join(rect))
-        
+
     def __repr__(self):
         """Return the string representation of the Rectangle."""
         rect = "Rectangle(" + str(self.__width)
         rect += ", " + str(self.__height) + ")"
         return (rect)
-        
+
     def __del__(self):
-        """Print a message when an instance is deleted."""
+        """Print a message for every deletion of a Rectangle."""
         print("Bye rectangle...")
